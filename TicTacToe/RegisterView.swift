@@ -15,7 +15,6 @@ struct RegisterView: View {
     @State private var registrationError: String?
     @Environment(\.presentationMode) var presentationMode
     @State private var navigateToLogin = false
-    @State private var showAlert = false
     @State private var invalidEmail = false
     @State private var passwordsMismatch = false
     
@@ -68,33 +67,24 @@ struct RegisterView: View {
                 .padding(.top, 16)
                 .autocapitalization(.none)
                 .textContentType(.newPassword)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(passwordsMismatch ? Color.red : Color.clear, lineWidth: 2)
-                )
                 .onChange(of: confirmPassword) { _, newConfirmPassword in
                     passwordsMismatch = false
                     registrationError = nil
                 }
             
             Button(action: {
-                // Reset error states
                 invalidEmail = false
                 passwordsMismatch = false
                 
-                // Validate email
                 if !isValidEmail(email) {
                     registrationError = "Invalid email format"
                     invalidEmail = true
-                    showAlert = true
                     return
                 }
                 
-                // Check if passwords match
                 if password != confirmPassword {
                     registrationError = "Passwords do not match"
                     passwordsMismatch = true
-                    showAlert = true
                     return
                 }
                 
@@ -105,7 +95,6 @@ struct RegisterView: View {
                         self.navigateToLogin = true
                     case .failure(let error):
                         self.registrationError = error.localizedDescription
-                        showAlert = true
                         print("Registration failed: \(error.localizedDescription)")
                     }
                 }
@@ -119,27 +108,8 @@ struct RegisterView: View {
                     .cornerRadius(10)
             }
             .padding(.top, 24)
-            
-            if let registrationError = registrationError {
-                Text("Error: \(registrationError)")
-                    .foregroundColor(.red)
-                    .padding(.top, 16)
-            }
-        }
-        .alert(isPresented: $showAlert) {
-            Alert(
-                title: Text("Registration Error"),
-                message: Text(registrationError ?? "Unknown error"),
-                dismissButton: .default(Text("OK"))
-            )
         }
         .navigationTitle("Register")
-        .navigationBarItems(leading: Button(action: {
-            self.presentationMode.wrappedValue.dismiss()
-        }) {
-            Image(systemName: "chevron.left")
-            Text("Back")
-        })
         .navigationDestination(isPresented: $navigateToLogin) {
             ContentView()
         }
