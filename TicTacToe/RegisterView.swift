@@ -1,10 +1,3 @@
-//
-//  RegisterView.swift
-//  TicTacToe
-//
-//  Created by Aleksandr Sirenko on 15/05/2024.
-//
-
 import SwiftUI
 
 struct RegisterView: View {
@@ -15,6 +8,7 @@ struct RegisterView: View {
     @State private var registrationError: String?
     @Environment(\.presentationMode) var presentationMode
     @State private var navigateToLogin = false
+    @State private var showAlert = false
     @State private var invalidEmail = false
     @State private var passwordsMismatch = false
     
@@ -95,6 +89,7 @@ struct RegisterView: View {
                         self.navigateToLogin = true
                     case .failure(let error):
                         self.registrationError = error.localizedDescription
+                        self.showAlert = true
                         print("Registration failed: \(error.localizedDescription)")
                     }
                 }
@@ -108,6 +103,13 @@ struct RegisterView: View {
                     .cornerRadius(10)
             }
             .padding(.top, 24)
+        }
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text("Registration Error"),
+                message: Text(registrationError ?? "Unknown error"),
+                dismissButton: .default(Text("OK"))
+            )
         }
         .navigationTitle("Register")
         .navigationDestination(isPresented: $navigateToLogin) {
