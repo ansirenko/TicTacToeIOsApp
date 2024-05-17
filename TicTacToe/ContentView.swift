@@ -14,6 +14,7 @@ struct ContentView: View {
     @State private var loginError: String?
     @State private var isLoggedIn = false
     @State private var showRegisterView = false
+    @State private var showAlert = false
     
     var body: some View {
         NavigationStack {
@@ -26,14 +27,14 @@ struct ContentView: View {
                         .padding()
                     
                     TextField("Username", text: $username)
-                        .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                        .autocapitalization(.none)
                         .padding()
                         .background(Color(.secondarySystemBackground))
                         .cornerRadius(8)
                         .padding(.horizontal, 24)
                     
                     SecureField("Password", text: $password)
-                        .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                        .autocapitalization(.none)
                         .padding()
                         .background(Color(.secondarySystemBackground))
                         .cornerRadius(8)
@@ -47,10 +48,9 @@ struct ContentView: View {
                                 self.token = token
                                 self.isLoggedIn = true
                                 saveToken(token: token)
-                                print("Login successful: \(token.access_token)")
                             case .failure(let error):
                                 self.loginError = error.localizedDescription
-                                print("Login failed: \(error.localizedDescription)")
+                                self.showAlert = true
                             }
                         }
                     }) {
@@ -63,12 +63,6 @@ struct ContentView: View {
                             .cornerRadius(10)
                     }
                     .padding(.top, 24)
-                    
-                    if let loginError = loginError {
-                        Text("Error: \(loginError)")
-                            .foregroundColor(.red)
-                            .padding(.top, 16)
-                    }
                     
                     HStack {
                         NavigationLink(destination: RegisterView()) {
@@ -91,9 +85,7 @@ struct ContentView: View {
             }
         }
         .onAppear {
-            // Проверяем, есть ли сохраненный токен
             if let savedToken = loadToken() {
-                // Временный способ проверки токена
                 self.token = savedToken
                 NetworkService.shared.getUserProfile { result in
                     switch result {
@@ -104,6 +96,13 @@ struct ContentView: View {
                     }
                 }
             }
+        }
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text("Login Error"),
+                message: Text(loginError ?? "Unknown error"),
+                dismissButton: .default(Text("OK"))
+            )
         }
     }
 }
