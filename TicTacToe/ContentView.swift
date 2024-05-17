@@ -45,10 +45,11 @@ struct ContentView: View {
                         NetworkService.shared.login(username: username, password: password) { result in
                             switch result {
                             case .success(let token):
+                                print("Login successful: \(token.access_token)") // Debug output
                                 self.token = token
                                 self.isLoggedIn = true
-                                saveToken(token: token)
                             case .failure(let error):
+                                print("Login failed: \(error.localizedDescription)") // Debug output
                                 self.loginError = error.localizedDescription
                                 self.showAlert = true
                             }
@@ -85,7 +86,7 @@ struct ContentView: View {
             }
         }
         .onAppear {
-            if let savedToken = loadToken() {
+            if let savedToken = TokenManager.shared.loadToken() {
                 self.token = savedToken
                 NetworkService.shared.getUserProfile { result in
                     switch result {

@@ -17,7 +17,7 @@
 		5D66B7042BF4B0010098E452 /* TicTacToeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D66B7032BF4B0010098E452 /* TicTacToeUITests.swift */; };
 		5D66B7062BF4B0010098E452 /* TicTacToeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D66B7052BF4B0010098E452 /* TicTacToeUITestsLaunchTests.swift */; };
 		5D66B7132BF4B79E0098E452 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D66B7122BF4B79E0098E452 /* NetworkService.swift */; };
-		5D6D94962BF4D429005B57DA /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6D94952BF4D429005B57DA /* Token.swift */; };
+		5D6D94962BF4D429005B57DA /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6D94952BF4D429005B57DA /* TokenManager.swift */; };
 		5D6D94982BF4D4F2005B57DA /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6D94972BF4D4F2005B57DA /* RegisterView.swift */; };
 		5D6D949A2BF4D50D005B57DA /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6D94992BF4D50D005B57DA /* ForgotPasswordView.swift */; };
 		5D6D949C2BF4E620005B57DA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6D949B2BF4E620005B57DA /* User.swift */; };
@@ -57,7 +57,7 @@
 		5D66B7032BF4B0010098E452 /* TicTacToeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeUITests.swift; sourceTree = "<group>"; };
 		5D66B7052BF4B0010098E452 /* TicTacToeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5D66B7122BF4B79E0098E452 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		5D6D94952BF4D429005B57DA /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		5D6D94952BF4D429005B57DA /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
 		5D6D94972BF4D4F2005B57DA /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		5D6D94992BF4D50D005B57DA /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		5D6D949B2BF4E620005B57DA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -143,7 +143,7 @@
 				5D66B6EC2BF4B0010098E452 /* Assets.xcassets */,
 				5D66B6EE2BF4B0010098E452 /* Preview Content */,
 				5D66B7122BF4B79E0098E452 /* NetworkService.swift */,
-				5D6D94952BF4D429005B57DA /* Token.swift */,
+				5D6D94952BF4D429005B57DA /* TokenManager.swift */,
 				5D6D94972BF4D4F2005B57DA /* RegisterView.swift */,
 				5D6D94992BF4D50D005B57DA /* ForgotPasswordView.swift */,
 				5D6D949B2BF4E620005B57DA /* User.swift */,
@@ -433,7 +433,7 @@
 				5D66B6E92BF4AFFF0098E452 /* TicTacToeApp.swift in Sources */,
 				5D6D94A02BF4E6BC005B57DA /* PlayWithOpponentView.swift in Sources */,
 				5D6D949A2BF4D50D005B57DA /* ForgotPasswordView.swift in Sources */,
-				5D6D94962BF4D429005B57DA /* Token.swift in Sources */,
+				5D6D94962BF4D429005B57DA /* TokenManager.swift in Sources */,
 				5D6D949C2BF4E620005B57DA /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

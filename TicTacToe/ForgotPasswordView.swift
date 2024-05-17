@@ -23,7 +23,6 @@ struct ForgotPasswordView: View {
                 .padding(.horizontal, 24)
             
             Button(action: {
-                // Implement password recovery action
             }) {
                 Text("Recover Password")
                     .font(.headline)

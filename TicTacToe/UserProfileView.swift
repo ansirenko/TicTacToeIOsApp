@@ -31,7 +31,6 @@ struct UserProfileView: View {
                 .padding()
                 
                 Button(action: {
-                    // Implement start game action
                 }) {
                     Text("Start Game")
                         .font(.headline)
@@ -55,7 +54,6 @@ struct UserProfileView: View {
                         .padding(.horizontal, 24)
                     
                     Button(action: {
-                        // Implement play with opponent action
                     }) {
                         Text("Play")
                             .font(.headline)
